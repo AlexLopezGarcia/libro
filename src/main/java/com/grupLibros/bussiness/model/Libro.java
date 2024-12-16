@@ -1,4 +1,4 @@
-package com.grupLibros.libro;
+package com.grupLibros.bussiness;
 
 public class Libro {
     private Long id;
@@ -37,6 +37,6 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "libro isbn " + id + ", titulo " + titulo + ", autor " + autor;
+        return "libro: isbn " + id + ", titulo " + titulo + ", autor " + autor;
     }
 }

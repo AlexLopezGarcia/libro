@@ -1,5 +1,7 @@
 package com.grupLibros.libro;
 
+import com.grupLibros.bussiness.Libro;
+import com.grupLibros.bussiness.LibroServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +15,7 @@ import java.util.Optional;
 
 public class LibroController {
     @Autowired
-    private LibroServices libroServices;
+    private com.grupLibros.bussiness.LibroServices libroServices;
 
     // mètode GET per obtenir tots els usuaris
     @GetMapping
@@ -29,10 +31,6 @@ public class LibroController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // mètode GET per obtenir usuaris entre dues edats
-    @GetMapping
-
-
         // mètode POST per crear un nou usuari
         @PostMapping
         public ResponseEntity<Libro> crearUsuari(@RequestBody Libro libro) {
@@ -43,7 +41,7 @@ public class LibroController {
         // mètode PUT per actualitzar un usuari existent
         @PutMapping("/{id}")
         public ResponseEntity<Libro> actualitzarUsuari(@PathVariable Long id, @RequestBody Libro libro) {
-            Optional<Libro> usuariActualitzat = libroServices.update(id, libro);
+            Optional<Libro> usuariActualitzat = libroServices.update(libro);
             return usuariActualitzat.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
         }
 
