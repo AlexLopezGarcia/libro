@@ -1,7 +1,8 @@
-package com.grupLibros.libro;
+package com.grupLibros.presentation.restcontrollers;
 
-import com.grupLibros.bussiness.Libro;
-import com.grupLibros.bussiness.LibroServices;
+import com.grupLibros.bussiness.model.Libro;
+import com.grupLibros.bussiness.services.LibroServices;
+import com.grupLibros.bussiness.services.LibroServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 public class LibroController {
     @Autowired
-    private com.grupLibros.bussiness.LibroServices libroServices;
+    private LibroServicesImpl libroServices;
 
     // mètode GET per obtenir tots els usuaris
     @GetMapping

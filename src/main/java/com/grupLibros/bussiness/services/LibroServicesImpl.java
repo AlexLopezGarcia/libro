@@ -1,6 +1,7 @@
-package com.grupLibros.bussiness;
+package com.grupLibros.bussiness.services;
 
-import com.grupLibros.bussiness.Libro;
+import com.grupLibros.bussiness.model.Libro;
+import com.grupLibros.bussiness.services.LibroServices;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 

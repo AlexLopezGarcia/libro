@@ -1,4 +1,4 @@
-package com.grupLibros.bussiness;
+package com.grupLibros.bussiness.model;
 
 public class Libro {
     private Long id;

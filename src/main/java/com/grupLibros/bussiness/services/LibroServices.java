@@ -1,6 +1,6 @@
-package com.grupLibros.bussiness;
+package com.grupLibros.bussiness.services;
 
-import com.grupLibros.bussiness.Libro;
+import com.grupLibros.bussiness.model.Libro;
 
 import java.util.List;
 import java.util.Optional;
