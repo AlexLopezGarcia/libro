@@ -1,14 +1,13 @@
 package com.grupLibros.bussiness.services;
 
 import com.grupLibros.bussiness.model.Libro;
-import com.grupLibros.bussiness.services.LibroServices;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 @Service
 public class LibroServicesImpl implements LibroServices {
@@ -53,6 +52,6 @@ public class LibroServicesImpl implements LibroServices {
 
     @Override
     public List<Libro> getAll() {
-        return libros.values().stream().collect(Collectors.toList());
+        return new ArrayList<>(libros.values());
     }
 }

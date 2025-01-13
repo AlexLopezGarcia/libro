@@ -17,10 +17,21 @@ public class LibroController {
     @Autowired
     private LibroServicesImpl libroServices;
 
-    // mètode GET per obtenir tots els usuaris
-    @GetMapping
-    public List<Libro> obtenirTotsElsUsuaris() {
-        return libroServices.getAll();
+    // mètode GETall per obtenir tots els usuaris
+    @GetMapping("/libros")
+    public List<Libro> getAll(){// ResponseEntity<Void>
+
+        return null;//llista de productes
+    }
+    @GetMapping("/productos/{id}")
+    public ResponseEntity<?> read(@PathVariable Long id) {
+        Optional<Libro> optional = libroServices.read(id);
+
+        if (optional.isPresent()==false) {
+            RespuestaError respuestaError = new RespuestaError("No se encuentra el producto con id " + id);
+            return new ResponseEntity<>(respuestaError, HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(optional.get());
     }
 
     // mètode GET per obtenir un usuari per ID
@@ -35,7 +46,7 @@ public class LibroController {
         @PostMapping
         public ResponseEntity<Libro> crearUsuari(@RequestBody Libro libro) {
             Long l = libroServices.create(libro);
-            if(l > 1){
+            if(!(l == -1)){
                 return new ResponseEntity<>(libro, HttpStatus.CREATED);
             } else {
                 return new ResponseEntity<>(libro, HttpStatus.NOT_ACCEPTABLE);
