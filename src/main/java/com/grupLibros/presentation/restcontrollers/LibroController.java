@@ -1,7 +1,6 @@
 package com.grupLibros.presentation.restcontrollers;
 
 import com.grupLibros.bussiness.model.Libro;
-import com.grupLibros.bussiness.services.LibroServices;
 import com.grupLibros.bussiness.services.LibroServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,8 +34,12 @@ public class LibroController {
         // mètode POST per crear un nou usuari
         @PostMapping
         public ResponseEntity<Libro> crearUsuari(@RequestBody Libro libro) {
-            Libro usuariCreat = libroServices.create(libro);
-            return new ResponseEntity<>(usuariCreat, HttpStatus.CREATED);
+            Long l = libroServices.create(libro);
+            if(l > 1){
+                return new ResponseEntity<>(libro, HttpStatus.CREATED);
+            } else {
+                return new ResponseEntity<>(libro, HttpStatus.NOT_ACCEPTABLE);
+            }
         }
 
         // mètode PUT per actualitzar un usuari existent
