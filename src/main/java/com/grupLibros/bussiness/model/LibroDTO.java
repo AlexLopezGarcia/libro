@@ -1,24 +1,14 @@
 package com.grupLibros.bussiness.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
-@Entity
-public class Libro {
+public class LibroDTO {
     private Long id;
     private String titulo;
     private String autor;
 
-    @Id
-    private Long libroId;
-
-    public Libro(Long id, String titulo, String autor) {
+    public LibroDTO(Long id, String titulo, String autor) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
-    }
-
-    public Libro() {
     }
 
     public Long getId() {
@@ -45,16 +35,9 @@ public class Libro {
         this.autor = autor;
     }
 
-    public void setLibroId(Long libroId) {
-        this.libroId = libroId;
-    }
-
-    public Long getLibroId() {
-        return libroId;
-    }
-
-    @Override
-    public String toString() {
-        return "libro: isbn " + id + ", titulo " + titulo + ", autor " + autor;
+    public class LibroMapper {
+        public static LibroDTO toDTO(Libro libro) {
+            return new LibroDTO(libro.getId(), libro.getTitulo(), libro.getAutor());
+        }
     }
 }

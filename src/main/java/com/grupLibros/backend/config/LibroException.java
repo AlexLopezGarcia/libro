@@ -1,4 +1,4 @@
-package com.grupLibros.presentation.config;
+package com.grupLibros.backend.config;
 
 public class LibroException extends Exception {
 

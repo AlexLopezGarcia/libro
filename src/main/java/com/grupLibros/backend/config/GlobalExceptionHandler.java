@@ -1,4 +1,4 @@
-package com.grupLibros.presentation.config;
+package com.grupLibros.backend.config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
