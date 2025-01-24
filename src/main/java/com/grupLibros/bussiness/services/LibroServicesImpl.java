@@ -60,6 +60,6 @@ public class LibroServicesImpl implements LibroServices {
 
     @Override
     public String toString() {
-        return "LibroServicesImpl{libros=" + libros + ", currentId=" + currentId + '}';
+        return "LibroServicesImpl libros " + libros + ", currentId " + currentId;
     }
 }

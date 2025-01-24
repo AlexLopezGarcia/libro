@@ -1,6 +1,8 @@
 package com.grupLibros.bussiness.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
@@ -10,6 +12,7 @@ public class Libro {
     private String autor;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long libroId;
 
     public Libro(Long id, String titulo, String autor) {
