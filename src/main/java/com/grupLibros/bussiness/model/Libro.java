@@ -2,18 +2,25 @@ package com.grupLibros.bussiness.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.io.Serializable;
+
 @Entity
-public class Libro {
-    private Long id;
-    private String titulo;
-    private String autor;
+public class Libro implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long libroId;
+    private Long id;
+
+    @Column(nullable = false)
+    private String titulo;
+
+    @Column(nullable = false)
+    private String autor;
 
     public Libro(Long id, String titulo, String autor) {
         this.id = id;
@@ -46,14 +53,6 @@ public class Libro {
 
     public void setAutor(String autor) {
         this.autor = autor;
-    }
-
-    public void setLibroId(Long libroId) {
-        this.libroId = libroId;
-    }
-
-    public Long getLibroId() {
-        return libroId;
     }
 
     @Override
