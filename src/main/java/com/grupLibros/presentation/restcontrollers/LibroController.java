@@ -2,7 +2,7 @@ package com.grupLibros.presentation.restcontrollers;
 
 import com.grupLibros.bussiness.model.Libro;
 import com.grupLibros.bussiness.model.LibroDTO;
-import com.grupLibros.bussiness.services.LibroServices;
+import com.grupLibros.bussiness.services.LibroServicesImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Tag(name = "Libros", description = "Gestión de libros")
 public class LibroController {
     @Autowired
-    private LibroServices libroServices;
+    private LibroServicesImpl libroServices;
 
     @GetMapping
     public ResponseEntity<List<LibroDTO>> getAll() {

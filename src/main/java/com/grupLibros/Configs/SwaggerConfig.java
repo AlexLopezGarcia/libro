@@ -10,8 +10,7 @@ import io.swagger.v3.oas.models.info.Info;
 public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
-        return new OpenAPI()
-                .info(new Info()
+        return new OpenAPI().info(new Info()
                         .title("API de Gestión de Libros")
                         .version("1.0")
                         .description("Documentación de la API para gestionar libros en una librería"));
