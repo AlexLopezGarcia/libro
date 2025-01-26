@@ -1,6 +1,7 @@
 package com.grupLibros.presentation.restcontrollers;
 
 import com.grupLibros.bussiness.model.Libro;
+import com.grupLibros.bussiness.model.LibroDTO;
 import com.grupLibros.bussiness.services.LibroServices;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/libros")
@@ -18,8 +20,11 @@ public class LibroController {
     private LibroServices libroServices;
 
     @GetMapping
-    public ResponseEntity<List<Libro>> getAll() {
-        return ResponseEntity.ok(libroServices.getAll());
+    public ResponseEntity<List<LibroDTO>> getAll() {
+        List<LibroDTO> libroDTOs = libroServices.getAll().stream()
+                .map(LibroDTO.LibroMapper::toDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(libroDTOs);
     }
 
     @GetMapping("/{id}")
